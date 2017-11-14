@@ -25,8 +25,13 @@ module.exports.getAllRoutes =  function (request, response) {
 
         c.forEach(
             function(myDoc) {
+                console.log("_id"+myDoc._id);
                 console.log( "name: " + myDoc.name );  //just  loging the output to the console
                 console.log("price:"+myDoc.price);
+                console.log("CUSTOMER_ID:"+myDoc.CUSTOMER_ID);
+                console.log("BILLING_ID:"+myDoc.SHIPPING_ID);
+                console.log("DATE:"+myDoc.DATE);
+                console.log("ORDER_TOTAL"+myDoc.ORDER_TOTAL);
             }
         );
 
