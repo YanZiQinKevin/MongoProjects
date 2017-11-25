@@ -59,3 +59,85 @@ module.exports.getAllRoutes =  function (request, response) {
         });
     });//end of connect
 };//end function
+
+module.exports.storeData = function (req, res) {
+
+    //now processing post
+    //expecting data variable called name --retrieve value using body-parser
+    var body = JSON.stringify(req.body);  //if wanted entire body as JSON
+    var params = JSON.stringify(req.params);//if wanted parameters
+
+    // Retrieve the data associated with customer and bill addresss.
+    var first = req.body.first_name;
+    var last = req.body.last_name;
+    var address = req.body.bi_address;
+    var city = req.body.bi_city;
+    var state = req.body.bi_state;
+    var zip = req.body.bi_zip;
+    // Retrieve the data associated with billing.
+    var card = req.body.card;
+    var card_num = req.body.card_number;
+    var exp_date = req.body.date;
+    // Retrieve the data associated with shipping.
+    var ship_address = req.body.address;
+    var ship_city = req.body.city;
+    var ship_state = req.body.state;
+    var ship_zip = req.body.zip;
+
+    // Connect to the database.
+    mongodb.MongoClient.connect(uri, function(err, db) {
+        if(err) throw err;
+
+        // Create IDs for all the collections.
+        var customerID = Math.floor((Math.random() * 1000000000000) + 1);
+        var billingID = Math.floor((Math.random() * 1000000000000) + 1);
+        var shippingID = Math.floor((Math.random() * 1000000000000) + 1);
+
+        // Get collection of customers, billing, shipping, orders.
+        var customers = db.collection('CUSTOMERS');
+        var billing = db.collection('BILLING');
+        var shipping = db.collection('SHIPPING');
+        var orders = db.collection('ORDERS');
+
+        // Create a document to insert into CUSTOMERS.
+        var customerData = {_id : customerID, FIRSTNAME : first, LASTNAME : last,
+            STREET : cust_address, CITY : cust_city, STATE : cust_state, ZIP : cust_zip};
+
+        // Create a document to insert into BILLING.
+        var billingData = {_id : billingID, CUSTOMER_ID : customerID, CREDITCARDTYPE : card,
+            CREDITCARDNUM : card_num, CREDITCARDEXP : exp_date};
+
+        // Create a document to insert into SHIPPING.
+        var shippingData = {_id : billingID, CUSTOMER_ID : customerID, SHIPPING_STREET : ship_address,
+            SHIPPING_CITY : ship_city, SHIPPING_STATE : ship_state, SHIPPING_ZIP : ship_zip};
+
+        // Create a document to insert into ORDERS.
+        var orderData = {CUSTOMER_ID : customerID, BILLING_ID : billingID, SHIPPING_ID : shippingID,
+            DATE : new Date().toDateString()};
+
+        // Insert document into CUSTOMERS.
+        customers.insertOne(customerData, function (err, result) {
+            if (err) throw err;
+        });
+
+        // Insert document into BILLING.
+        billing.insertOne(billingData, function (err, result) {
+            if (err) throw err;
+        });
+
+        // Insert document into SHIPPING.
+        shipping.insertOne(shippingData, function (err, result) {
+            if (err) throw err;
+        });
+
+        // Insert document into ORDERS.
+        orders.insertOne(orderData, function (err, result) {
+            if (err) throw err;
+        });
+
+        // Close connection.
+        db.close(function  (err) {
+            if(err) throw err;
+        });
+    });
+};
