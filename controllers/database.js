@@ -121,24 +121,18 @@ module.exports.storeData = function (req, res) {
             DATE : new Date().toDateString()};
 
         // Insert document into SHIPPING.
-        shipping.insertOne(shippingData).then(function(result) {
-            // process result
-        });
+        shipping.insertOne(shippingData);
         // shipping.insertOne(shippingData, function (err, result) {
         //     if (err) throw err;
         // });
         //
         // // Insert document into BILLING.
-        billing.insertOne(billingData).then(function(result) {
-            // process result
-        });
+        billing.insertOne(billingData);
         // billing.insertOne(billingData, function (err, result) {
         //     if (err) throw err;
         // });
         // // Insert document into CUSTOMERS.
-        customers.insertOne(customerData).then(function(result) {
-            // process result
-        });
+        customers.insertOne(customerData);
         // customers.insertOne(customerData, function (err, result) {
         //     if (err) throw err;
         // });
