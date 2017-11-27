@@ -123,20 +123,20 @@ module.exports.storeData = function (req, res) {
 
 
         // Insert document into BILLING.
-        billing.insert(billingData, function (err, result) {
+        billing.insertMany(billingData, function (err, result) {
             if (err) throw err;
         });
         // Insert document into CUSTOMERS.
-        customers.insert(customerData, function (err, result) {
+        customers.insertMany(customerData, function (err, result) {
             if (err) throw err;
         });
         // Insert document into SHIPPING.
-        shipping.insert(shippingData, function (err, result) {
+        shipping.insertMany(shippingData, function (err, result) {
             if (err) throw err;
         });
 
         // Insert document into ORDERS.
-        orders.insert(orderData, function (err, result) {
+        orders.insertMany(orderData, function (err, result) {
             if (err) throw err;
         });
 
