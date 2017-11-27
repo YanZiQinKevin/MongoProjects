@@ -143,12 +143,10 @@ module.exports.storeData = function (req, res) {
                 STATE: request.req.body.bi_state,
                 ZIP: req.body.bi_zip
             };
-        Routes.find().toArray(function (err, docs) {
-            if(err) throw err;
 
-            response.render('storeData', {results: docs});
+        //    response.render('storeData', {results: docs});
 
-        });
+
         // Close connection.
 
         // db.close(function  (err) {
