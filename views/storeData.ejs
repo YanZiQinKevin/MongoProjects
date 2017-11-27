@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>mLab MongoDB test</title>
+
+</head>
+<body>
+<div class="container">
+    <h2>Thank you for your older</h2>
+    <ul>
+        <% results.forEach(function(r) { %>
+        <li>ID:<%= r._id %></li>
+        <ul>
+            <li>Name:<%=r.FIRSTNAME%></li>
+            <li>Lastname: <%=r.LASTNAME %> </li>
+            <li>Adress: <%=r.SHIPPING_STREET%></li>
+
+        </ul>
+        <br/><br/>
+        <% }); %>
+    </ul>
+</div>
+
+</body>
+</html>

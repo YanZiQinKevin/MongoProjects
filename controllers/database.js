@@ -1,7 +1,10 @@
 var mongodb = require('mongodb');
 var mongoDBURI = process.env.MONGODB_URI ||
     'mongodb://yan:c123465s@ds255265.mlab.com:55265/heroku_lt22jv12';
+var bodyParser = require('body-parser'); //to process data sent in on request need body-parser module
 
+router.use(bodyParser.json()); // for parsing application/json
+router.use(bodyParser.urlencoded({ extended: true })); // for parsing application/x-www-form-urlencode
 
 /** getAllRoutes controller logic that current does model logic too -connects to Mongo database and
  * queries the Routes collection to retrieve all the routes and build the output usig the
@@ -69,6 +72,8 @@ module.exports.storeData = function (req, res) {
 
     // Retrieve the data associated with customer and bill addresss.
     var first = req.body.first_name;
+    console.log("first",first);
+
     var last = req.body.last_name;
     var address = req.body.bi_address;
     var city = req.body.bi_city;
@@ -101,7 +106,7 @@ module.exports.storeData = function (req, res) {
 
         // Create a document to insert into CUSTOMERS.
         var customerData = {_id : customerID, FIRSTNAME : first, LASTNAME : last,
-            STREET : cust_address, CITY : cust_city, STATE : cust_state, ZIP : cust_zip};
+            STREET : address, CITY : city, STATE : state, ZIP : zip};
 
         // Create a document to insert into BILLING.
         var billingData = {_id : billingID, CUSTOMER_ID : customerID, CREDITCARDTYPE : card,
@@ -134,7 +139,22 @@ module.exports.storeData = function (req, res) {
         orders.insertOne(orderData, function (err, result) {
             if (err) throw err;
         });
+        var allData =
+            {
+                cid: CUSTOMER_ID,
+                FIRSTNAME: req.body.first_name,
+                LASTNAME: req.body.last_name,
+                BILLING_STREET: req.body.bi_address,
+                CITY: request.req.body.bi_city,
+                STATE: request.req.body.bi_state,
+                ZIP: req.body.bi_zip
+            };
+        Routes.find().toArray(function (err, docs) {
+            if(err) throw err;
 
+            response.render('storeData', {results: docs});
+
+        });
         // Close connection.
         db.close(function  (err) {
             if(err) throw err;
