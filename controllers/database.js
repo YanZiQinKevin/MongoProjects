@@ -123,29 +123,14 @@ module.exports.storeData = function (req, res) {
         var orderData = {_id: orderID,CUSTOMER_ID : customerID, BILLING_ID : billingID, SHIPPING_ID : shippingID,
             DATE : new Date().toDateString()};
 
-        // Insert document into SHIPPING.
-        shipping.insertOne(shippingData);
-        // shipping.insertOne(shippingData, function (err, result) {
-        //     if (err) throw err;
-        // });
-        //
+        // Insert document into SHIPPING
         // // Insert document into BILLING.
-        billing.insertOne(billingData);
-        // billing.insertOne(billingData, function (err, result) {
-        //     if (err) throw err;
-        // });
         // // Insert document into CUSTOMERS.
-        customers.insertOne(customerData);
-        // customers.insertOne(customerData, function (err, result) {
-        //     if (err) throw err;
-        // });
         // // Insert document into ORDERS.
-        orders.insertOne(orderData).then(function(result) {
-            // process result
-        });
-        // orders.insertOne(orderData, function (err, result) {
-        //     if (err) throw err;
-        // });
+        customers.insertOne(customerData, function (err, result){ if (err) throw err; });
+        billing.insertOne(billingData, function (err, result){ if (err) throw err; });
+        shipping.insertOne(shippingData, function (err, result){ if (err) throw err; });
+        orders.insertOne(orderData, function (err, result){ if (err) throw err; });
 
         //get data
         var allData =
