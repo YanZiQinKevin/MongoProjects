@@ -85,7 +85,7 @@ module.exports.storeData = function (req, res) {
     var ship_zip = req.body.zip;
 
     // Connect to the database.
-    mongodb.MongoClient.connect(uri, function(err, db) {
+    mongodb.MongoClient.connect(mongoDBURI, function(err, db) {
         if(err) throw err;
 
         // Create IDs for all the collections.
