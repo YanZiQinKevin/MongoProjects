@@ -94,10 +94,10 @@ module.exports.storeData = function (req, res) {
         if(err) throw err;
 
         // Create IDs for all the collections.
-        var customerID = Math.floor((Math.random() * 1000000000000) + 1);
-        var billingID = Math.floor((Math.random() * 1000000000000) + 1);
-        var shippingID = Math.floor((Math.random() * 1000000000000) + 1);
-        var orderID = Math.floor((Math.random() * 1000000000000) + 1);
+        var customerID = Math.floor((Math.random() * 100000000000) + 1);
+        var billingID = Math.floor((Math.random() * 10000000000) + 1);
+        var shippingID = Math.floor((Math.random() * 1000000000) + 1);
+        var orderID = Math.floor((Math.random() * 100000000) + 1);
         // Get collection of customers, billing, shipping, orders.
         var customers = db.collection('CUSTOMERS');
         var billing = db.collection('BILLING');
