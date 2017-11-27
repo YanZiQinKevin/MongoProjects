@@ -3,8 +3,6 @@ var mongoDBURI = process.env.MONGODB_URI ||
     'mongodb://yan:c123465s@ds255265.mlab.com:55265/heroku_lt22jv12';
 var bodyParser = require('body-parser'); //to process data sent in on request need body-parser module
 
-router.use(bodyParser.json()); // for parsing application/json
-router.use(bodyParser.urlencoded({ extended: true })); // for parsing application/x-www-form-urlencode
 
 /** getAllRoutes controller logic that current does model logic too -connects to Mongo database and
  * queries the Routes collection to retrieve all the routes and build the output usig the
