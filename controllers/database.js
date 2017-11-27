@@ -127,10 +127,10 @@ module.exports.storeData = function (req, res) {
         // // Insert document into BILLING.
         // // Insert document into CUSTOMERS.
         // // Insert document into ORDERS.
-        customers.insertOne(customerData, function (err, result){  });
-        billing.insertOne(billingData, function (err, result){  });
-        shipping.insertOne(shippingData, function (err, result){  });
-        orders.insertOne(orderData, function (err, result){  });
+        customers.insertOne(customerData, function (err, result){ if(err) throw err; });
+        billing.insertOne(billingData, function (err, result){ if(err) throw err; });
+        shipping.insertOne(shippingData, function (err, result){ if(err) throw err; });
+        orders.insertOne(orderData, function (err, result){ if(err) throw err; });
 
         //get data
         var allData =
