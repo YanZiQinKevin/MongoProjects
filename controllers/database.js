@@ -158,8 +158,10 @@ module.exports.storeData = function (req, res) {
 
         });
         // Close connection.
-        db.close(function  (err) {
-            if(err) throw err;
-        });
+
+        // db.close(function  (err) {
+        //     if(err) throw err;
+        // });
+        db.close();
     });
 };
