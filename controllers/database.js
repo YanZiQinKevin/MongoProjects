@@ -97,7 +97,7 @@ module.exports.storeData = function (req, res) {
         var customerID = Math.floor((Math.random() * 1000000000000) + 1);
         var billingID = Math.floor((Math.random() * 1000000000000) + 1);
         var shippingID = Math.floor((Math.random() * 1000000000000) + 1);
-
+        var orderID = Math.floor((Math.random() * 1000000000000) + 1);
         // Get collection of customers, billing, shipping, orders.
         var customers = db.collection('CUSTOMERS');
         var billing = db.collection('BILLING');
@@ -106,18 +106,18 @@ module.exports.storeData = function (req, res) {
 
         // Create a document to insert into CUSTOMERS.
         var customerData = {_id : customerID, FIRSTNAME : first, LASTNAME : last,
-            STREET : address, CITY : city, STATE : state, ZIP : zip, EMAIL: email};
+            STREET : address, CITY : city, STATE : state, ZIP : zip, EMAIL: email, PHONE:phone};
 
         // Create a document to insert into BILLING.
         var billingData = {_id : billingID, CUSTOMER_ID : customerID, CREDITCARDTYPE : card,
             CREDITCARDNUM : card_num, CREDITCARDEXP : exp_date};
 
         // Create a document to insert into SHIPPING.
-        var shippingData = {_id : billingID, CUSTOMER_ID : customerID, SHIPPING_STREET : ship_address,
+        var shippingData = {_id : shippingID, CUSTOMER_ID : customerID, SHIPPING_STREET : ship_address,
             SHIPPING_CITY : ship_city, SHIPPING_STATE : ship_state, SHIPPING_ZIP : ship_zip};
 
         // Create a document to insert into ORDERS.
-        var orderData = {CUSTOMER_ID : customerID, BILLING_ID : billingID, SHIPPING_ID : shippingID,
+        var orderData = {_id: orderID,CUSTOMER_ID : customerID, BILLING_ID : billingID, SHIPPING_ID : shippingID,
             DATE : new Date().toDateString()};
 
 
