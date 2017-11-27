@@ -133,16 +133,7 @@ module.exports.storeData = function (req, res) {
         orders.insertOne(orderData, function (err, result){ if(err) throw err; });
 
         //get data
-        var allData =
-            {
-                cid: CUSTOMER_ID,
-                FIRSTNAME: req.body.first_name,
-                LASTNAME: req.body.last_name,
-                BILLING_STREET: req.body.bi_address,
-                CITY: request.req.body.bi_city,
-                STATE: request.req.body.bi_state,
-                ZIP: req.body.bi_zip
-            };
+
 
         //    response.render('storeData', {results: docs});
 
