@@ -1,3 +1,6 @@
+var express = require('express');
+var router = express.Router();
+
 var mongodb = require('mongodb');
 var mongoDBURI = process.env.MONGODB_URI ||
     'mongodb://yan:c123465s@ds255265.mlab.com:55265/heroku_lt22jv12';
