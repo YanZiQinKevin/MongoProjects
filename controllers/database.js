@@ -136,7 +136,7 @@ module.exports.storeData = function (req, res) {
         });
 
         // Insert document into ORDERS.
-        orders.insertMany(orderData, function (err, result) {
+        orders.insertOne(orderData, function (err, result) {
             if (err) throw err;
         });
 
