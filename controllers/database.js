@@ -106,7 +106,7 @@ module.exports.storeData = function (req, res) {
 
         // Create a document to insert into CUSTOMERS.
         var customerData = {_id : customerID, FIRSTNAME : first, LASTNAME : last,
-            STREET : address, CITY : city, STATE : state, ZIP : zip};
+            STREET : address, CITY : city, STATE : state, ZIP : zip, EMAIL: email};
 
         // Create a document to insert into BILLING.
         var billingData = {_id : billingID, CUSTOMER_ID : customerID, CREDITCARDTYPE : card,
@@ -139,6 +139,8 @@ module.exports.storeData = function (req, res) {
         orders.insertOne(orderData, function (err, result) {
             if (err) throw err;
         });
+
+        //get data
         var allData =
             {
                 cid: CUSTOMER_ID,
