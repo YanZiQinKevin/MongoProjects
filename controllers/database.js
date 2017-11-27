@@ -154,6 +154,6 @@ module.exports.storeData = function (req, res) {
         // db.close(function  (err) {
         //     if(err) throw err;
         // });
-        db.close();
+        db.close(function (err){ if(err) throw err; });
     });
 };
