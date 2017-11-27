@@ -120,16 +120,16 @@ module.exports.storeData = function (req, res) {
         var orderData = {CUSTOMER_ID : customerID, BILLING_ID : billingID, SHIPPING_ID : shippingID,
             DATE : new Date().toDateString()};
 
-        // Insert document into CUSTOMERS.
-        customers.insertOne(customerData, function (err, result) {
-            if (err) throw err;
-        });
+
 
         // Insert document into BILLING.
         billing.insertOne(billingData, function (err, result) {
             if (err) throw err;
         });
-
+        // Insert document into CUSTOMERS.
+        customers.insertOne(customerData, function (err, result) {
+            if (err) throw err;
+        });
         // Insert document into SHIPPING.
         shipping.insertOne(shippingData, function (err, result) {
             if (err) throw err;
