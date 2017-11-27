@@ -75,13 +75,15 @@ module.exports.storeData = function (req, res) {
     console.log("first",first);
 
     var last = req.body.last_name;
+    var email=req.body.email;
+    var phone=req.body.phone;
     var address = req.body.bi_address;
     var city = req.body.bi_city;
     var state = req.body.bi_state;
     var zip = req.body.bi_zip;
     // Retrieve the data associated with billing.
     var card = req.body.card;
-    var card_num = req.body.card_number;
+    var card_num = req.body.card_num;
     var exp_date = req.body.date;
     // Retrieve the data associated with shipping.
     var ship_address = req.body.address;
