@@ -137,7 +137,8 @@ module.exports.storeData = function (req, res) {
 
         //    response.render('storeData', {results: docs});
 
-
+        res.render('storeData', {customer: customerData, order: orderData,
+            billing: billingData, shipping: shippingData });
         // Close connection.
 
         // db.close(function  (err) {
