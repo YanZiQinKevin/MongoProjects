@@ -91,7 +91,7 @@ module.exports.storeData = function (req, res) {
     var ship_city = req.body.city;
     var ship_state = req.body.state;
     var ship_zip = req.body.zip;
-    var provector=req.body.array;
+    var provector=req.body.provector;
     var total = req.body.total;
 
     // Connect to the database.
