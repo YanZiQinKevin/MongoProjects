@@ -35,29 +35,28 @@
         <table class="table" width="500" border="1" cellspacing="5" cellpadding="5">
             <h1 style="text-align:center">Information from database</h1>
             <tr>
-                <th scope="row">Last Name:</th>
-                <td><%= customer.LASTNAME %></td>
+                <th scope="row">Last Name:<%= customer.LASTNAME %></th>
             </tr>
             <tr>
-                <th scope="row">First Name:</th>
-                <td><%= customer.FIRSTNAME %></td>
+                <th scope="row">First Name:<%= customer.FIRSTNAME %></th>
+
             </tr>
             <tr>
-                <th scope="row">Email:</th>
-                <td><%= customer.EMAIL %></td>
+                <th scope="row">Email:<%= customer.EMAIL %></th>
+
             </tr>
             <tr>
-                <th scope="row">Phone number:</th>
-                <td><%= customer.PHONE %></td>
+                <th scope="row">Phone number:<%= customer.PHONE %></th>
+
             </tr>
             <tr>
-                <th scope="row">shopping Address:</th>
-                <td style="word-wrap:break-word;word-break:break-all"><%= shipping.SHIPPING_STREET %>
-                </td>
+                <th scope="row">shopping Address:<%= shipping.SHIPPING_STREET %></th>
+
+
             </tr>
             <tr>
-                <th scope="row">card number:</th>
-                <td><%= billing.CREDITCARDNUM %></td>
+                <th scope="row">card number:<%= billing.CREDITCARDNUM %></th>
+
             </tr>
         </table>
 
